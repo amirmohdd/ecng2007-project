@@ -1,0 +1,3 @@
+Implemented Login, Sign up, Dashboard, Profile, medical information update pages from mock up
+Implemented Confirm password field on sign up page
+Implemented check boxes to select specific days on medical information update page

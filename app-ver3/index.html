@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Information Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <div class="form-container" id="login-form">
+      <h2>Login</h2>
+      <form onsubmit="loginUser(event)">
+        <label for="login-username">Username:</label>
+        <input type="text" id="login-username" required>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" required>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="#" onclick="showRegistrationForm()">Register here</a></p>
+      </form>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="form-container hidden" id="register-form">
+      <h2>Register</h2>
+      <form onsubmit="registerUser(event)">
+        <label for="register-username">Username:</label>
+        <input type="text" id="register-username" required>
+        <label for="register-password">Password:</label>
+        <input type="password" id="register-password" required>
+        <label for="emergency-contact">Emergency Contact:</label>
+        <input type="text" id="emergency-contact" required>
+        <button type="submit">Register</button>
+        <p>Already have an account? <a href="#" onclick="showLoginForm()">Login here</a></p>
+      </form>
+    </div>
+
+    <!-- Profile Page -->
+    <div class="profile hidden" id="profile">
+      <h2>Profile</h2>
+      <p><strong>Username:</strong> <span id="profile-username"></span></p>
+      
+      <!-- Medical Information Form for Editing -->
+      <form onsubmit="saveProfile(event)">
+        <label for="medications">Medications:</label>
+        <input type="text" id="profile-medications"><br>
+        <label for="dosage">Dosage:</label>
+        <input type="text" id="profile-dosage"><br>
+        <label for="allergies">Allergies:</label>
+        <input type="text" id="profile-allergies"><br>
+        <label for="emergency-contact">Emergency Contact:</label>
+        <input type="text" id="profile-emergency-contact" disabled><br>
+        <button type="submit">Save Profile</button>
+      </form>
+
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Added encrypted passwords with bcrypt libary
+Added Username check. (Username must be between 5- 10 characters)
+Added Password check. (Password must be at least 8 characters, contain uppercase and lowercase letters, a digit, and a special character.)
+App key changed to 'ijustwannapassdawg' by amir for some reason

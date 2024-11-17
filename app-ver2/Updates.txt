@@ -1,0 +1,4 @@
+Removed medical information from register page
+Added page specifically to update medical information with dynamic fields for multiple medications
+Separated medical information from users.txt and stores medication in medical_data.txt
+Displays all information in a table on home page

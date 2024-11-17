@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Information</title>
+    <link rel="stylesheet" href="addinfo.css">
+</head>
+<body>
+    <div class="container">
+        <form id="additionalInfoForm">
+            <h1>Medications and Allergies</h1>
+
+            <div class="medications">
+                <div class="medication-header">
+                    <h2>Medications</h2>
+                    <button type="button" id="addMedication" class="add-medication-btn">+</button>
+                </div>
+                <div class="medication-group" id="medicationTemplate">
+                    <label for="medicationName">Medication Name:</label>
+                    <input type="text" class="medication-name" name="medicationName[]" required>
+
+                    <label for="dosage">Dosage:</label>
+                    <input type="number" class="dosage" name="dosage[]" required>
+
+                    <label>Select Days to Take:</label>
+                    <div class="days">
+                        <label><input type="checkbox" name="days_0[]" value="Monday"> Monday</label>
+                        <label><input type="checkbox" name="days_0[]" value="Tuesday"> Tuesday</label>
+                        <label><input type="checkbox" name="days_0[]" value="Wednesday"> Wednesday</label>
+                        <label><input type="checkbox" name="days_0[]" value="Thursday"> Thursday</label>
+                        <label><input type="checkbox" name="days_0[]" value="Friday"> Friday</label>
+                        <label><input type="checkbox" name="days_0[]" value="Saturday"> Saturday</label>
+                        <label><input type="checkbox" name="days_0[]" value="Sunday"> Sunday</label>
+                    </div>
+
+                    <label for="time">Time to Take:</label>
+                    <input type="time" class="time" name="time[]" required>
+                    
+                    <button type="button" class="remove-medication-btn">Remove</button>
+                </div>
+            </div>
+
+            <div class="allergies">
+                <div class="allergies-header">
+                    <h2>Allergies</h2>
+                    <button type="button" id="addAllergy" class="add-allergy-btn">+</button>
+                </div>
+
+                <div class="allergy-group" id="allergyTemplate">
+                    <label for="allergyName">Allergy Name:</label>
+                    <input type="text" class="allergy-name" name="allergyName[]" required>
+                    <button type="button" class="remove-allergy-btn">Remove</button>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <br>
+        <button type="button" id="backButton" class="back-btn">Back</button>
+    </div>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'profile.html'; // Redirect to profile.html
+        });
+    </script>
+</body>
+<script src="script.js"></script>
+</html>

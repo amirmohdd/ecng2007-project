@@ -1,0 +1,5 @@
+Added login page
+Added register page
+Added simple css
+Added home page which displays time and shows user information
+All user information stored in users.txt

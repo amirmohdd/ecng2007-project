@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #time {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #profile-section {
+            display: none;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome! Here's the current time:</h1>
+    <div id="time"></div>
+    <button id="profile-btn">Show Profile</button>
+    <button id="logout-btn">Logout</button>
+
+    <div id="profile-section">
+        <h2>User Profile</h2>
+        <p><strong>Username:</strong> <span id="profile-username"></span></p>
+        <p><strong>Medications:</strong> <span id="profile-medications"></span></p>
+        <p><strong>Dosage:</strong> <span id="profile-dosage"></span></p>
+        <p><strong>Allergies:</strong> <span id="profile-allergies"></span></p>
+        <p><strong>Emergency Contact:</strong> <span id="profile-emergency-contact"></span></p>
+    </div>
+
+    <script>
+        // Display the current time
+        function displayTime() {
+            const now = new Date();
+            document.getElementById("time").textContent = now.toLocaleTimeString();
+        }
+
+        // Call displayTime every second to update the time
+        setInterval(displayTime, 1000);
+
+        // Handle the profile button click
+        document.getElementById("profile-btn").addEventListener("click", () => {
+            const profileSection = document.getElementById("profile-section");
+            if (profileSection.style.display === "none") {
+                fetch('/profile')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById("profile-username").textContent = data.username;
+                        document.getElementById("profile-medications").textContent = data.medications;
+                        document.getElementById("profile-dosage").textContent = data.dosage;
+                        document.getElementById("profile-allergies").textContent = data.allergies;
+                        document.getElementById("profile-emergency-contact").textContent = data.emergencyContact;
+                        profileSection.style.display = "block";
+                    })
+                    .catch(error => {
+                        console.error('Error fetching profile:', error);
+                        alert('Could not load profile. Please try again.');
+                    });
+            } else {
+                profileSection.style.display = "none";
+            }
+        });
+
+        // Handle the logout button click
+        document.getElementById("logout-btn").addEventListener("click", () => {
+            fetch('/logout', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/';  // Redirect to login page
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

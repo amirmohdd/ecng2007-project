@@ -1,0 +1,2 @@
+Fixed Reminders to sort per week based on closest time.
+Added Alert when reminders = current time.

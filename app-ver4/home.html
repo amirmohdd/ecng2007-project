@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - RxTrackr</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header>
+        <div class="logo">RxTrackr</div>
+        <nav>
+            <ul>
+                <li><a href="profile.html">Profile</a></li>  <!-- Direct link to the profile page -->
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#" id="logout-btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="main-content">
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <h2>Dashboard</h2>
+                <div id="calendar">
+                    <center><p><strong>Something wrong with <br> the calendar backend so empty for now :/</strong></p></center>
+                </div>
+            </div>
+
+            <!-- Reminders Section -->
+            <div class="reminders-section">
+                <h3>Upcoming Medications</h3>
+                <div class="slider">
+                    <!-- Placeholder for dynamic reminder items -->
+                    <div class="reminder-item">
+                        <h4>Medication Name</h4>
+                        <p>Next dose: Date and Time</p>
+                    </div>
+                    <!-- More reminder items can be added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logout functionality
+        document.getElementById("logout-btn").addEventListener("click", function() {
+            fetch('/logout', { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/login.html'; // Redirect to the login page on logout
+                } else {
+                    alert('Logout failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Logout error:', error);
+                alert('Error logging out. Please check your network connection.');
+            });
+        });
+    </script>
+</body>
+</html>

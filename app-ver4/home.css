@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', sans-serif; 
+    background: linear-gradient(to bottom right, #e6f7ff, #f0f5ff); 
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(135deg, #4caf50, #80deea); /*#006064 Changed to match h1 color */
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border-bottom-left-radius: 20px; */
+    /* border-bottom-right-radius: 20px; */
+}
+
+header .logo {
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: rgba(76, 175, 80, 0.2); /* Lighter green for hover effect */
+}
+
+.dashboard-container {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.calendar-section,
+.reminders-section {
+    background-color: white; /* white for card backgrounds */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.calendar-section {
+    width: 65%;
+}
+
+.reminders-section {
+    width: 30%;
+}
+
+h2,
+h3 {
+    color: #006064; /* Match h1 color */
+}
+
+#calendar {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slider {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.reminder-item {
+    background-color: #e0f2f1; /* Light teal matching form-section */
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-item h4 {
+    color: #000000; /* Match h1 color */
+    font-size: 16px;
+}
+
+.reminder-item p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+/* New from here */
+#calendar {
+    height: 500px; /* Adjust this height as needed */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 20px; 
+    background: linear-gradient(135deg, #4caf50, #80deea); /* Match header color */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    font-size: 16px;
+    cursor: pointer; 
+    transition: background 0.3s ease; 
+    margin-left: 10px; 
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a); /* Darker green on hover */
+}
+
+/* For dashboard button 
+.add-event {
+    
+}*/
+
+.add-reminder {
+    background: linear-gradient(135deg, #4caf50, #80deea); /* Button color */
+    color: white; 
+    border: none; 
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    font-size: 20px; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-left: 10px; 
+    transition: background 0.3s ease; 
+}
+
+.add-reminder:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a); /* Darker gradient on hover */
+}
+
+.custom-button {
+    background-color: transparent; 
+    color: transparent; 
+    border: none;
+    padding: 15px; 
+    cursor: pointer; 
+    font-size: 30px; 
+    font-weight: bold; 
+    margin: 0 10px; 
+    background-image: linear-gradient(135deg, #4caf50, #80deea); 
+}
+
+.custom-button:hover {
+    opacity: 0.8; 
+}
+
+.calendar-header {
+    color: #006064;
+    font-size: 1.5em; 
+    margin-bottom: 20px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+
+

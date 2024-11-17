@@ -1,0 +1,2 @@
+Added Start Dates, End Dates and Time field in update medical information page
+Stores Dates and Time in medical_data.txt

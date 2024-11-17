@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #time {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #profile-section {
+            display: none;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 5px;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome! Here's the current time:</h1>
+    <div id="time"></div>
+
+    <button id="profile-btn">Show Profile</button>
+    <button id="edit-medical-btn">Edit Medical Information</button>
+    <button id="logout-btn">Logout</button>
+
+    <div id="profile-section">
+        <h2>User Profile</h2>
+        <p><strong>Username:</strong> <span id="profile-username"></span></p>
+        <p><strong>Emergency Contact:</strong> <span id="profile-emergency-contact"></span></p>
+
+        <h3>Medications and Dosages</h3>
+        <table id="medication-table">
+            <thead>
+                <tr>
+                    <th>Medication</th>
+                    <th>Dosage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Medication data will be injected here -->
+            </tbody>
+        </table>
+
+        <h3>Allergies</h3>
+        <ul id="profile-allergies"></ul>
+    </div>
+
+    <script>
+        // Display the current time
+        function displayTime() {
+            const now = new Date();
+            document.getElementById("time").textContent = now.toLocaleTimeString();
+        }
+
+        // Call displayTime every second to update the time
+        setInterval(displayTime, 1000);
+
+        // Handle the profile button click
+        document.getElementById("profile-btn").addEventListener("click", () => {
+            const profileSection = document.getElementById("profile-section");
+            if (profileSection.style.display === "none") {
+                fetch('/profile')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById("profile-username").textContent = data.username;
+                        document.getElementById("profile-emergency-contact").textContent = data.emergencyContact;
+
+                        // Populate the medication table
+                        const medicationTableBody = document.getElementById("medication-table").getElementsByTagName("tbody")[0];
+                        medicationTableBody.innerHTML = "";  // Clear previous rows
+
+                        data.medications.forEach((medication, index) => {
+                            const dosage = data.dosages[index] || "";  // Corresponding dosage or empty
+                            const row = document.createElement("tr");
+                            row.innerHTML = `<td>${medication}</td><td>${dosage}</td>`;
+                            medicationTableBody.appendChild(row);
+                        });
+
+                        // Populate allergies list
+                        const allergiesList = document.getElementById("profile-allergies");
+                        allergiesList.innerHTML = "";  // Clear previous entries
+                        data.allergies.forEach(allergy => {
+                            const listItem = document.createElement("li");
+                            listItem.textContent = allergy;
+                            allergiesList.appendChild(listItem);
+                        });
+
+                        profileSection.style.display = "block";
+                    })
+                    .catch(error => {
+                        console.error('Error fetching profile:', error);
+                        alert('Could not load profile. Please try again.');
+                    });
+            } else {
+                profileSection.style.display = "none";
+            }
+        });
+
+        // Handle the Edit Medical Information button click
+        document.getElementById("edit-medical-btn").addEventListener("click", () => {
+            window.location.href = '/update_medical_info';  // Redirect to the medical info edit page
+        });
+
+        // Handle the logout button click
+        document.getElementById("logout-btn").addEventListener("click", () => {
+            fetch('/logout', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/';  // Redirect to login page
+                    }
+                });
+        });
+    </script>
+</body>
+</html>
+
