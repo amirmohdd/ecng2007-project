@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background: linear-gradient(to bottom right, #e6f7ff, #f0f5ff);
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(135deg, #4caf50, #80deea); /*#006064 Changed to match h1 color */
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: rgba(76, 175, 80, 0.2); /* Lighter green for hover effect */
+}
+
+.dashboard-container {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.calendar-section,
+.reminders-section {
+    background-color: white; /* white for card backgrounds */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-section {
+    width: 65%;
+}
+
+.reminders-section {
+    width: 30%;
+}
+
+h2,
+h3 {
+    color: #006064; /* Match h1 color */
+}
+
+#calendar {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slider {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.reminder-item {
+    background-color: #e0f2f1; /* Light teal matching form-section */
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-item h4 {
+    color: #000000; /* Match h1 color */
+    font-size: 16px;
+}
+
+.reminder-item p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+/* Calendar styles */
+#calendar {
+    height: 750px; /* Adjust this height as needed */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #4caf50, #80deea); /* Match header color */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-left: 10px;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a); /* Darker green on hover */
+}
+
+/* Add reminder button */
+.add-reminder {
+    background: linear-gradient(135deg, #4caf50, #80deea); /* Button color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    transition: background 0.3s ease;
+}
+
+.add-reminder:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a); /* Darker gradient on hover */
+}
+
+/* Calendar Layout */
+#calendar-container {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.calendar {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.calendar th {
+    background: linear-gradient(135deg, #4caf50, #80deea); /* Header color gradient */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #e0f2f1;
+}
+
+.calendar td {
+    width: 14.28%; /* Equal column width for 7 days */
+    padding: 10px;
+    vertical-align: top;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0; /* Subtle divider */
+}
+
+.calendar td .day {
+    font-size: 16px;
+    font-weight: bold;
+    color: #006064;
+    margin-bottom: 10px;
+}
+
+.calendar td .events {
+    font-size: 14px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.calendar td .event {
+    background-color: #e8f5e9; /* Light green for event highlight */
+    color: #2e7d32; /* Darker green for event text */
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.calendar td .no-events {
+    color: #9e9e9e; /* Neutral grey for no event text */
+    font-size: 12px;
+}
+
+/* Current Day Highlight */
+.current-day {
+    background-color: #81c784; /* More vibrant light green */
+    color: white; /* White text for better contrast */
+    font-weight: bold;
+    border-radius: 8px; /* Rounded corners */
+    padding: 8px;
+    font-size: 16px;
+}
+
+/* Button Styling for calendar navigation */
+.calendar-navigation {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.calendar-navigation .btn {
+    background: linear-gradient(135deg, #4caf50, #80deea); /* Match main color theme */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: background 0.3s ease;
+}
+
+.calendar-navigation .btn:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a); /* Darker hover effect */
+}
+
+/* Ensure each cell adjusts dynamically based on the calendar's height */
+.calendar td {
+    height: 100px; /* Ensures dynamic height */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .calendar-section,
+    .reminders-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .calendar td {
+        padding: 8px;
+    }
+
+    .calendar-navigation .btn {
+        width: 100px;
+    }
+}

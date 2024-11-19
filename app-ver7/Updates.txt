@@ -1,0 +1,3 @@
+Fixed Reminders to sort per week based on closest time.
+Added Alert when reminders = current time.
+Fixed issue where emergency contact wasnt being saved.
